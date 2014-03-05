@@ -6,7 +6,7 @@
 
 - name: stop jetty
   service: name=jetty state=stopped
+  notify: restart jetty
 
 - name: deploy war file
   copy: src=/tmp/gitbucket.war dest={{ jetty_home }}/webapps/
-  notify: restart jetty

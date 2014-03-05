@@ -1,0 +1,35 @@
+---
+
+- name: add jetty group
+  group: name=jetty
+
+- name: add jetty user
+  user: name=jetty group=jetty shell=/bin/false
+
+- name: create opt directory
+  file: path=/opt state=directory
+
+- name: download jetty9 archive
+  get_url: url=http://eclipse.org/downloads/download.php?file=/jetty/stable-9/dist/jetty-distribution-{{ jetty_version }}.tar.gz&r=1
+           dest=/opt/jetty-distribution-{{ jetty_version }}.tar.gz
+
+- name: create unpacking directory
+  file: path=/opt/jetty-distribution-{{ jetty_version }} state=directory
+
+- name: unpacking archive
+  unarchive: src=/opt/jetty-distribution-{{ jetty_version }}.tar.gz dest=/opt
+
+- name: update owner to jetty user
+  file: path=/opt/jetty-distribution-{{ jetty_version }} owner=jetty group=jetty recurse=yes
+
+- name: create jetty home symlink
+  file: src=/opt/jetty-distribution-{{ jetty_version }} dest={{ jetty_home }} owner=jetty group=jetty state=link
+
+- name: create jetty start symlink
+  file: src={{ jetty_home }}/bin/jetty.sh dest=/etc/init.d/jetty state=link
+
+- name: create jetty settings file
+  template: src=default-jetty.j2 dest=/etc/default/jetty
+
+- name: start jetty service
+  service: name=jetty state=started enabled=yes

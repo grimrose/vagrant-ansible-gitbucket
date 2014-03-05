@@ -1,0 +1,7 @@
+java_versions: oracle-java7-installer
+
+jetty_home: /opt/jetty
+jetty_version: 9.1.2.v20140210
+jetty_port: 8080
+
+git_bucket_version: 1.11.1

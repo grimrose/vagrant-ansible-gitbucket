@@ -1,0 +1,12 @@
+---
+
+- name: install nginx
+  apt: pkg=nginx
+
+- name: add nginx gitbucket in sites-available
+  template: src=available.gitbucket.j2 dest=/etc/nginx/sites-available/gitbucket
+  notify: restart nginx
+
+- name: link nginx gitbucket in sites-enabled
+  file: src=/etc/nginx/sites-available/gitbucket dest=/etc/nginx/sites-enabled/gitbucket state=link
+  notify: restart nginx

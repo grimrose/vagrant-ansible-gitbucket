@@ -1,0 +1,19 @@
+---
+
+- name: install python-pycurl
+  apt: pkg=python-pycurl
+
+- name: install wget
+  apt: pkg=wget
+
+- name: install japan local
+  apt: pkg=language-pack-ja
+
+- name: set locale to $locale
+  command: /usr/sbin/update-locale LANG=ja_JP.UTF-8 LC_ALL=ja_JP.UTF-8
+
+- name: set /etc/localtime to Asia/Tokyo
+  copy: src=/usr/share/zoneinfo/Asia/Tokyo dest=/etc/localtime
+
+- name: update locales
+  command: /usr/sbin/dpkg-reconfigure locales

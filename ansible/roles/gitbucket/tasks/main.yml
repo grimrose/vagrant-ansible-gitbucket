@@ -1,0 +1,12 @@
+---
+
+- name: download war file
+  get_url: url=https://github.com/takezoe/gitbucket/releases/download/{{ git_bucket_version }}/gitbucket.war 
+           dest=/tmp/gitbucket.war
+
+- name: stop jetty
+  service: name=jetty state=stopped
+
+- name: deploy war file
+  copy: src=/tmp/gitbucket.war dest={{ jetty_home }}/webapps/
+  notify: restart jetty

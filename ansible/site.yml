@@ -1,0 +1,11 @@
+---
+# Main GitBucket deployment playbook
+
+- hosts: git_bucket_server
+  sudo: true
+  roles:
+     - role: common
+     - role: java
+     - role: jetty9
+     - role: gitbucket
+     - role: nginx

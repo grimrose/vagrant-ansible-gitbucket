@@ -1,3 +1,0 @@
-[submodule "ansible/roles/java"]
-	path = ansible/roles/java
-	url = https://github.com/vrischmann/ansible-role-java.git

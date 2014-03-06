@@ -1,0 +1,13 @@
+---
+
+- name: Add repository of PPA
+  apt_repository: repo='ppa:webupd8team/java' update_cache=yes
+
+- name: Automatically select the Oracle License
+  shell: echo debconf shared/accepted-oracle-license-v1-1 select true | sudo debconf-set-selections
+
+- name: Update APT package cache
+  apt: update_cache=yes
+
+- name: Install Oracle JDK7
+  apt: pkg=oracle-java7-installer update-cache=yes state=latest

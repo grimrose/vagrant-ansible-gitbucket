@@ -10,14 +10,11 @@
   file: path=/opt state=directory
 
 - name: download jetty9 archive
-  get_url: url=http://eclipse.org/downloads/download.php?file=/jetty/stable-9/dist/jetty-distribution-{{ jetty_version }}.tar.gz&r=1
-           dest=/opt/jetty-distribution-{{ jetty_version }}.tar.gz
-
-- name: create unpacking directory
-  file: path=/opt/jetty-distribution-{{ jetty_version }} state=directory
+  get_url: url=http://eclipse.org/downloads/download.php?file=/jetty/{{ jetty_version }}/dist/jetty-distribution-{{ jetty_version }}.tar.gz&r=1
+           dest=/tmp/jetty-distribution-{{ jetty_version }}.tar.gz
 
 - name: unpacking archive
-  unarchive: src=/opt/jetty-distribution-{{ jetty_version }}.tar.gz dest=/opt
+  unarchive: src=/tmp/jetty-distribution-{{ jetty_version }}.tar.gz dest=/opt
 
 - name: update owner to jetty user
   file: path=/opt/jetty-distribution-{{ jetty_version }} owner=jetty group=jetty recurse=yes
@@ -29,7 +26,10 @@
   file: src={{ jetty_home }}/bin/jetty.sh dest=/etc/init.d/jetty state=link
 
 - name: create jetty settings file
-  template: src=default-jetty.j2 dest=/etc/default/jetty
+  template: src=default.jetty.j2 dest=/etc/default/jetty
+
+- name: create jetty log directory
+  file: path=/var/log/jetty owner=jetty group=jetty recurse=yes state=directory
 
 - name: start jetty service
   service: name=jetty state=started enabled=yes

@@ -1,6 +1,4 @@
 jetty_home: /opt/jetty
-jetty_version: 9.1.2.v20140210
 jetty_port: 8080
 
 application_name: gitbucket
-git_bucket_version: 1.11.1

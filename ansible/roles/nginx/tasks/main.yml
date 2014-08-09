@@ -10,3 +10,7 @@
 - name: link nginx gitbucket in sites-enabled
   file: src=/etc/nginx/sites-available/gitbucket dest=/etc/nginx/sites-enabled/gitbucket state=link
   notify: restart nginx
+
+- name: stop nginx
+  service: name=nginx state=stopped
+  notify: restart nginx

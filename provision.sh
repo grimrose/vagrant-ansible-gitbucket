@@ -3,7 +3,7 @@
 if ! [ `which add-apt-repository` ]; then
 	apt-get install -y python-software-properties
 	apt-get update -y
-	apt-add-repository -y ppa:rquillo/ansible
+	apt-add-repository -y ppa:ansible/ansible
 fi
 
 if ! [ `which ansible` ]; then
@@ -11,4 +11,4 @@ if ! [ `which ansible` ]; then
 	apt-get install -y ansible
 fi
 
-ansible-playbook -i /vagrant/ansible/hosts /vagrant/ansible/site.yml
+PYTHONUNBUFFERED=1 ansible-playbook -i /vagrant/ansible/hosts /vagrant/ansible/site.yml

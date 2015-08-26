@@ -5,3 +5,5 @@
 ### Vagrant ###
 .vagrant/
 
+packer_cache
+*.box

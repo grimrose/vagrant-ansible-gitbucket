@@ -1,4 +1,6 @@
 jetty_home: /opt/jetty
 jetty_port: 8081
 
+jenkins_port: 8082
+
 application_name: gitbucket

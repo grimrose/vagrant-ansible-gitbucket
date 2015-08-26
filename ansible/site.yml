@@ -10,4 +10,5 @@
      - java
      - jetty9
      - gitbucket
+     - jenkins
      - nginx

@@ -10,8 +10,9 @@
   file: path=/opt state=directory
 
 - name: download jetty9 archive
-  uri:  url=http://eclipse.org/downloads/download.php?file=/jetty/{{ jetty_version }}/dist/jetty-distribution-{{ jetty_version }}.tar.gz&r=1
-        dest=/tmp/jetty-distribution-{{ jetty_version }}.tar.gz
+  uri:
+    url=http://eclipse.org/downloads/download.php?file=/jetty/{{ jetty_version }}/dist/jetty-distribution-{{ jetty_version }}.tar.gz&r=1
+    dest=/tmp/jetty-distribution-{{ jetty_version }}.tar.gz
 
 - name: unpacking archive
   unarchive: src=/tmp/jetty-distribution-{{ jetty_version }}.tar.gz dest=/opt copy=no
@@ -31,5 +32,5 @@
 - name: create jetty log directory
   file: path=/var/log/jetty owner=jetty group=jetty recurse=yes state=directory
 
-- name: start jetty service
-  service: name=jetty state=started enabled=yes
+- name: enable jetty service
+  service: name=jetty state=restarted enabled=yes

@@ -1,4 +1,4 @@
 jetty_home: /opt/jetty
-jetty_port: 8080
+jetty_port: 8081
 
 application_name: gitbucket

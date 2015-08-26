@@ -9,5 +9,8 @@
 - name: Update APT package cache
   apt: update_cache=yes
 
-- name: Install Oracle JDK7
-  apt: pkg=oracle-java7-installer update-cache=yes state=latest
+- name: Install Oracle JDK8
+  apt: pkg=oracle-java8-installer update-cache=yes state=latest
+
+- name: Default to Oracle JDK8
+  apt: pkg=oracle-java8-set-default state=latest

@@ -23,10 +23,25 @@ after
 $ git submodule update
 ```
 
-
 ## packer
 
 ``` sh
 $ cd packer
 $ packer build template.json
+```
+
+## vagrant
+
+``` sh
+$ vagrant up
+$ vagrant provision
+```
+
+# serverspec
+
+``` sh
+$ cd ansible
+$ gem install bundler
+$ bundle install --path=vendor/bundle
+$ bundle exec rake serverspec:GitBucket-Servers
 ```

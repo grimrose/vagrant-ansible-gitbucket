@@ -1,0 +1,3 @@
+[submodule "packer-templates"]
+	path = packer-templates
+	url = https://github.com/shiguredo/packer-templates

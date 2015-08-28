@@ -1,7 +1,10 @@
 ---
 
-- name: install python-pycurl
-  apt: pkg=python-pycurl
+- name: install python packages
+  apt: pkg={{ item }}
+  with_items:
+    - python-pycurl
+    - python-httplib2
 
 - name: install wget
   apt: pkg=wget

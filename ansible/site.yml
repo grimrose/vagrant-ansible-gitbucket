@@ -1,11 +1,14 @@
 ---
 # Main GitBucket deployment playbook
 
-- hosts: git_bucket_server
+- name: GitBucket-Servers
+  hosts: git_bucket_server
+  user: vagrant
   sudo: true
   roles:
-     - role: common
-     - role: java
-     - role: jetty9
-     - role: gitbucket
-     - role: nginx
+     - { role: common,    tags: ['common'] }
+     - { role: java,      tags: ['java'] }
+     - { role: jetty9,    tags: ['jetty9'] }
+     - { role: gitbucket, tags: ['gitbucket'] }
+     - { role: jenkins,   tags: ['jenkins'] }
+     - { role: nginx,     tags: ['nginx'] }

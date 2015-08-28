@@ -22,6 +22,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     ansible.groups = {
       "git_bucket_server" => "default"
     }
+    # ansible.tags = ['jetty9']
   end
 
 end

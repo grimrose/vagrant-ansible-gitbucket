@@ -6,9 +6,9 @@
   user: vagrant
   sudo: true
   roles:
-     - common
-     - java
-     - jetty9
-     - gitbucket
-     - jenkins
-     - nginx
+     - { role: common,    tags: ['common'] }
+     - { role: java,      tags: ['java'] }
+     - { role: jetty9,    tags: ['jetty9'] }
+     - { role: gitbucket, tags: ['gitbucket'] }
+     - { role: jenkins,   tags: ['jenkins'] }
+     - { role: nginx,     tags: ['nginx'] }

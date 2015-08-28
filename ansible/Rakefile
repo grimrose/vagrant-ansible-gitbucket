@@ -59,7 +59,8 @@ namespace :serverspec do
       RSpec::Core::RakeTask.new(var["name"].to_sym) do |t|
         puts "Run serverspec for #{var["name"]} to #{host}"
         ENV['TARGET_HOST'] = host
-        ENV['TARGET_PRIVATE_KEY'] = '~/.vagrant.d/insecure_private_key'
+        # vagrant ssh
+        ENV['TARGET_PRIVATE_KEY'] = '../.vagrant/machines/default/virtualbox/private_key'
         ENV['TARGET_USER'] = var["user"]
         t.pattern = 'roles/{' + var["roles"].join(',') + '}/spec/*_spec.rb'
       end

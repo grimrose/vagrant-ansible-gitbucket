@@ -62,7 +62,8 @@ namespace :serverspec do
         # vagrant ssh
         ENV['TARGET_PRIVATE_KEY'] = '../.vagrant/machines/default/virtualbox/private_key'
         ENV['TARGET_USER'] = var["user"]
-        t.pattern = 'roles/{' + var["roles"].join(',') + '}/spec/*_spec.rb'
+        # role with tags
+        t.pattern = 'roles/{' + var["roles"].map {|r| r["role"] }.join(',') + '}/spec/*_spec.rb'
       end
     end
   end

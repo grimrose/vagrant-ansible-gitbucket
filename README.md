@@ -37,7 +37,16 @@ $ vagrant up
 $ vagrant provision
 ```
 
-# serverspec
+## ansible
+
+in manually
+
+``` sh
+$ cd ansible
+$ ansible-playbook -i hosts site.yml
+```
+
+## serverspec
 
 ``` sh
 $ cd ansible

@@ -6,8 +6,11 @@
     - python-pycurl
     - python-httplib2
 
-- name: install wget
-  apt: pkg=wget
+- name: install packages
+  apt: pkg={{ item }} state=latest
+  with_items:
+    - wget
+    - git
 
 - name: install japanese locale
   apt: pkg=language-pack-ja
